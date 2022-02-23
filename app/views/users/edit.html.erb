@@ -1,0 +1,40 @@
+<p id="notice"></p>
+<div class = "container">
+<div class = "row">
+<div class = "col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
+<h2>User info</h2>
+
+<% if @user.errors.any? %>
+<diV class = "error_explanation"><%= @user.errors.count %>errors prohibited this user from being saved:<br>
+<% @user.errors.full_messages.each do |message| %><br>
+<%= message %>
+</div>
+<% end %>
+<% end %>
+
+
+<%= form_with model:@user, local:true do |f| %>
+
+<div class="form-group">
+<label for="user_name">Name</label>
+<%= f.text_field :name, class: "form-control name", autofocus: true, placeholder:"名前"%>
+</div>
+
+<div class = "form-group">
+<label for="user_image">Image</label>
+<%= f.attachment_field :profile_image, class: "form-control-file user_image", placeholder: "プロフィール画像" %>
+</div>
+
+<div class="form-group">
+<label for="user_introduction">Introduction</label>
+<%= f.text_area :introduction, class: "form-control name", autofocus: true %>
+</div>
+<div class="form-group">
+<%= f.submit "Update User" %>
+</div>
+<% end %>
+</div>
+</div>
+</div>
+</div>
+
